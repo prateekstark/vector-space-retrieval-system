@@ -1,7 +1,11 @@
+from utils import save_dict, load_dict
+
+
 class InvertedIndex(object):
-	def __init__(self, document_list):
+	def __init__(self, document_list=None):
 		self.vocabulary = {}
-		self.add_docs(document_list)
+		if(document_list is not None):
+			self.add_docs(document_list)
 
 	def add_docs(self, document_list):
 		for doc_id in document_list:
@@ -12,7 +16,7 @@ class InvertedIndex(object):
 					self.vocabulary[word] = [doc_id]
 
 	def save(self, name='indexfile', path='./'):
-		inv_indx_output = open(path + name + '.idx', 'wb')
-		inv_indx_output.write(bytes(str(idx.vocabulary).encode('utf-8')))
-		inv_indx_output.close()
+		save_dict(self.vocabulary, path + name + '.idx')
 
+	def load(self, name='indexfile', path='./'):
+		self.vocabulary = load_dict(path + name + '.idx')
