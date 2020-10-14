@@ -5,7 +5,7 @@ import string
 import pickle
 
 
-def preprocess(text):
+def preprocess(text, query=False):
 	'''
 	Preprocessing Steps:
 		1) Convert to lower case.
@@ -15,8 +15,16 @@ def preprocess(text):
 		5) Stemming
 	'''
 	text = text.lower()
-	text_p = "".join([char for char in text if char not in string.punctuation])
+	punctuations = string.punctuation
+	if(query):
+		punctuations = punctuations.replace('*', '')
+	text_p = "".join([char for char in text if char not in punctuations])
+	'''
+	For more optimal preprocessing we can compare python.split() vs nltk.tokenize.
 	words = nltk.word_tokenize(text_p)
+	'''
+	words = text_p.split()
+	
 	filter_stop_words = [word for word in words if word not in stopwords.words('english')]
 	porter = PorterStemmer()
 	stemmed = [porter.stem(word) for word in filter_stop_words]
