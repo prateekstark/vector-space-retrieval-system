@@ -1,6 +1,7 @@
 from utils import preprocess
 from bs4 import Tag
 
+
 class Document(object):
     def __init__(self, bs_content):
         self.id = bs_content.docno.string.strip()

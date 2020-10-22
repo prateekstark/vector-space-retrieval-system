@@ -19,7 +19,7 @@ def preprocess(text, query=False):
     if query:
         punctuations = punctuations.replace("*", "")
         punctuations = punctuations.replace(":", "")
-    text_p = "".join([char if char not in punctuations else ' ' for char in text])    
+    text_p = "".join([char if char not in punctuations else " " for char in text])
     """
 	For more optimal preprocessing we can compare python.split() vs nltk.tokenize.
 	"""

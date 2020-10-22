@@ -23,9 +23,9 @@ if __name__ == "__main__":
         content = "".join(file.readlines())
         file.close()
         bs_content = BeautifulSoup(content, "html.parser")
-        for doc in bs_content.find_all('doc'):
+        for doc in bs_content.find_all("doc"):
             idx.add_doc(doc)
-    
+
     idx.assign_postings_list()
     idx.save()
     end_time = time.time()
