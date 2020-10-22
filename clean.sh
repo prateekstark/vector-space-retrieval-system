@@ -1,1 +1,1 @@
-rm -rf __pycache__ *.idx *.dict
+rm -rf __pycache__ *.idx *.dict resultfile

@@ -1,0 +1,2 @@
+python vecsearch.py --cutoff 10 --query data/topics.51-100 --output resultfile --dict indexfile.dict --index indexfile.idx
+./benchmark/trec_eval/trec_eval -mndcg_cut.10 -M100 -mset_F data/qrels.filtered.51-100 resultfile
